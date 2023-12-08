@@ -1,0 +1,25 @@
+name: JavaScript Linter
+
+on:
+  push:
+    branches:
+      - main # À adapter selon vos besoins
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14' # Version de Node.js à utiliser
+
+      - name: Install JSLint
+        run: npm install -g jslint # Installer JSLint globalement
+
+      - name: Run JSLint
+        run: jslint *.js # Remplacez `your_file.js` par le nom de votre fichier JavaScript que vous voulez lint
