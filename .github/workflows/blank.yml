@@ -23,7 +23,7 @@ jobs:
 
       - name: Run JSLint
         run: |
-          jslint your_file.js || exit 1 # Exécuter JSLint et sortir avec le code 1 s'il y a des erreurs
+          jslint *.js || exit 1 # Exécuter JSLint et sortir avec le code 1 s'il y a des erreurs
 
       - name: Verify linting results
         run: exit 0 # Cette étape est uniquement pour clarifier que la vérification s'est terminée avec succès
