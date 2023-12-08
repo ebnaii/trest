@@ -27,6 +27,6 @@ jobs:
       - name: Verify linting results
         run: exit 0 # Cette étape est uniquement pour clarifier que la vérification s'est terminée avec succès
 
-      - name: Commit if linting passed
-        if: ${{ success() }}
-        run: git commit -m "Linting passed" && git push origin main
+      - name: Revert commit if linting failed
+        if: ${{ failure() }}
+        run: git reset --hard HEAD^
