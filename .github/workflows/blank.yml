@@ -1,32 +1,21 @@
-name: JavaScript Linter
+name: JSLint Check
 
 on:
   push:
     branches:
-      - main # À adapter selon vos besoins
+      - main
 
 jobs:
   lint:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Use Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14' # Version de Node.js à utiliser
-
       - name: Install JSLint
-        run: npm install -g jslint # Installer JSLint globalement
+        run: npm install -g jslint
 
       - name: Run JSLint
-        run: jslint *.js || exit 1 # Exécuter JSLint et sortir avec le code 1 s'il y a des erreurs
-
-      - name: Verify linting results
-        run: exit 0 # Cette étape est uniquement pour clarifier que la vérification s'est terminée avec succès
-
-      - name: Revert commit if linting failed
-        if: ${{ failure() }}
-        run: git reset --hard HEAD^
+        run: |
+          jslint path/to/your/javascript/files/*.js || exit 1
