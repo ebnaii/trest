@@ -3,7 +3,9 @@ name: JSLint Check
 on:
   push:
     branches:
-      - main
+      - '*'
+      - '!develop'
+      - '!main'
 
 jobs:
   lint:
